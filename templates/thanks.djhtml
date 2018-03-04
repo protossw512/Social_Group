@@ -1,0 +1,4 @@
+{% extends 'base.djhtml' %}
+{% block content %}
+    <h1>Thanks for visiting, com back soon!</h1>
+{% endblock %}
