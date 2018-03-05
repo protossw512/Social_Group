@@ -13,3 +13,7 @@ $ pip install django-braces
  - accounts: Create a new account or login with existing account
  - groups: Create, query and manage interest groups
  - posts: Create, query and manage posts in different groups
+ 
+### TODO list
+ - refine CSS style to make it look better
+ - integrate rich content editor to replace default text content
