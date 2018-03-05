@@ -11,11 +11,11 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Post(models.Model):
-    user = models.ForeignKey(User, related_name='posts')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     created_at = models.DateTimeField(auto_now=True)
     message = models.TextField()
     message_html = models.TextField(editable=False)
-    groups = models.ForeignKey(Group, related_name='posts', null=True, blank=True)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='posts', null=True, blank=True)
 
     def __str__(self):
         return self.message
@@ -25,7 +25,7 @@ class Post(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverser('posts:single', kwargs={'username':self.user.username,
+        return reverse('posts:single', kwargs={'username':self.user.username,
                                                 'pk':self.pk})
     class Meta:
         ordering = ['-created_at']
